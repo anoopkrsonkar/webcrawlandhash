@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h3
+
+         ul
+          p Results for the Keyword "#{data1}" and page no "#{pagen}" is-
+         h5
+          each prop, i in title
+           li= i + ': ' + prop
+           
+  
+  h4 
+         p Total Number of Result - #{totalcount}
+
+         a(href='/') Click here to try more  
+                  
+                   
+
+        
