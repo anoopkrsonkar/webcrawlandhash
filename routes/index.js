@@ -102,8 +102,9 @@ request(url, function(error, response, html){
         var $ = cheerio.load(html);
         //console.log($.text());
 
-    totalResult=new Array();
+    var totalResult=new Array();
     var count=0;
+    var errormsg="";
     
     
     if ($('.quickLookGridItemFullName').length > 0){
@@ -126,7 +127,7 @@ request(url, function(error, response, html){
         var data = $(this);
         //var totalResults=new Array();
         
-        totalResult= data.text();
+        errormsg= data.text();
         //console.log(totalResult+" "+totalResult.length);
         
                 
@@ -153,7 +154,8 @@ res.render('result', {
             title: totalResult,
             data1: keyword,
             totalcount: count ,
-            pagen:pageNo   
+            pagen:pageNo,
+            err:errormsg   
         })
 
 

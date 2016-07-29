@@ -6,8 +6,14 @@ block content
          ul
           p Results for the Keyword "#{data1}" and page no "#{pagen}" is-
          h5
-          each prop, i in title
-           li= i + ': ' + prop
+          if err
+            p #{err}
+
+          else
+            each prop, i in title
+             li= i + ': ' + prop
+
+             
            
   
   h4 
