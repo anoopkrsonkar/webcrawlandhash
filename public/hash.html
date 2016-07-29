@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+      
+    <body class="jumbotron text-center" style="background-color:skyblue;">
+        <center>
+              <h3>Reverse Hash</h3>
+                       <br><br>
+                <h3>Please Enter Hash data to reverse:</h3>
+                     <br>
+                  <div class="hash-form"> <input type="text" id="word" value="leepadg" maxlength=9> <button id="calculate-hash">Calculate Hash</button></div>
+                   <div id="hash" data-correct="930846109532517"> <strong>Computed Hash:</strong> <span id="hash-value"></span>  <div id="hash-error"></div>
+
+
+
+
+                    <script>
+                    var check,hash,letters;
+                    letters="acdegilmnoprstuw";
+                    check=function(c)
+                    {
+                      var a,b,d;b=0;
+                      for(d=c.length;b<d;b++)if(a=c[b],-1===letters.indexOf(a))return"The word should only contain letters in "+letters;return null
+                  };
+                    hash=function(c)
+                    {
+                      var a,b,d,e;
+                      b=7;
+                      d=0;
+                      for(e=c.length;d<e;d++)a=c[d],b=37*b+letters.indexOf(a);
+                      return b
+                  };
+
+$("#calculate-hash").click(function(c)
+{
+  var a,b,d,e;
+  e=$("#word").val();
+  c=$("#hash");
+  a=$("#hash-error");
+  b=parseInt(c.attr("data-correct"),10);
+  if(d=check(e))return a.text(d).show(),c.hide();
+  a.hide();
+  a=hash(e);
+  return c.toggleClass("hash-correct",a===b).show().find("#hash-value").text(a)});
+</script>                   
+          </center>
+    </body>
+</html>
+
+<!--
+<script type="text/javascript">
+
+  function myFunction() {
+    var keyword = document.getElementById("keyword");
+    var keywordP = document.getElementById("keywordP");
+    var pageNo = document.getElementById("pageNo");
+    //var grid = document.getElementById("elements");
+    //document.getElementById("demo").innerHTML = x;
+   keyword=keyword.value;
+   keywordP=keywordP.value;
+   pageNo=pageNo.value;
+   //grid=grid.value;
+    document.getElementById("demo").innerHTML = keyword;document.getElementById("demo1").innerHTML = keywordP;document.getElementById("demo2").innerHTML = pageNo;//document.getElementById("demo3").innerHTML = grid;
+    
+//console.log(cont);
+}
+
+</script>
+-->
+

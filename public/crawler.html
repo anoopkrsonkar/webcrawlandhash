@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+      
+    <body class="jumbotron text-center" style="background-color:skyblue;">
+        <center>
+              <h3>Web Crawler</h3>
+                       <br><br>
+                <h3>Enter here If you are entering only keyword:</h3>
+                     <br>
+                   <form action="/firstQueryResult" method="post">
+
+                         Keyword:<input type="text"  id="keyword" name="keyword" placeholder="Enter here if only keyword" required>
+                                <input type="submit" value="Submit">
+                   </form>
+
+
+                     <br><br>
+                <h3>Enter here If you are entering both keyword and page number:</h3><br>
+                    <form action="/secondQueryResult" method="post">
+                         Keyword:<input type="text" id= "keywordP" name="keywordpage" placeholder="Enter the Keyword" required>  Page no:<input type="text" id="pageNo" name="page" placeholder="Enter Page no" required>
+                                 <input type="submit"  value="Submit">
+                     </form>
+          </center>
+    </body>
+</html>
+
+<!--
+<script type="text/javascript">
+
+  function myFunction() {
+    var keyword = document.getElementById("keyword");
+    var keywordP = document.getElementById("keywordP");
+    var pageNo = document.getElementById("pageNo");
+    //var grid = document.getElementById("elements");
+    //document.getElementById("demo").innerHTML = x;
+   keyword=keyword.value;
+   keywordP=keywordP.value;
+   pageNo=pageNo.value;
+   //grid=grid.value;
+    document.getElementById("demo").innerHTML = keyword;document.getElementById("demo1").innerHTML = keywordP;document.getElementById("demo2").innerHTML = pageNo;//document.getElementById("demo3").innerHTML = grid;
+    
+//console.log(cont);
+}
+
+</script>
+-->
+

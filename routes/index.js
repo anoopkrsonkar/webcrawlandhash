@@ -6,9 +6,9 @@ var request = require('request');
 var cheerio = require('cheerio');
 
  //GET home page. 
-router.get('/', function (req, res) {
-   res.sendFile( __dirname + "/" + "webScraper.html" );
-}); 
+
+
+
 
 // API for firstquery which contains only keyword
 router.post('/firstQueryResult', function(req, res){
@@ -112,7 +112,7 @@ request(url, function(error, response, html){
 
     $('.quickLookGridItemFullName').filter(function(){
         var data = $(this)
-         console.log(data);
+         //console.log(data);
 
         //var totalResults=new Array();
         var t=0;
