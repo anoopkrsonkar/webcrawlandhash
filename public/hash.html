@@ -8,43 +8,49 @@
       
     <body class="jumbotron text-center" style="background-color:skyblue;">
         <center> <ul>
-                <li> <h3 style="color:green;"> Hash</h3>
+                <li>
+                   <h3 style="color:green;"> Hash</h3>
                        
-                <h4>Please Enter String data to Hash:</h4>
-                     <br>
-                  <div class="hash-form"> <input type="text" id="word" value="leepadg" maxlength=9> <button id="calculate-hash">Calculate Hash</button></div><div id="hash" >
-                  <br>
-                    <strong style="color:red;">Computed Hash:</strong> <span id="hash-value"></span>  <div id="hash-error"></div>
-                    <br><br><br>
-</li>
+                       <h4>Please Enter String data to Hash:</h4>
+                                   <br>
+                          <div class="hash-form"> <input type="text" id="word" value="leepadg" maxlength=9> <button id="calculate-hash">Calculate Hash</button></div><div id="hash" >
+                                    <br>
+                              <strong style="color:red;">Computed Hash:</strong> <span id="hash-value"></span> </div><br> <div id="hash-error"></div>
+                                 <br><br><br>
+                </li>
 
-          <li>    <h3 style="color:green;">Reverse Hash</h3>
+                <li>    
+                                    <h3 style="color:green;">Reverse Hash</h3>
                        
-                <h4>Please Enter Hash data to reverse:</h4>
-                     <br>
-                  <div class="rhash-form"> <input type="number" id="rword" value=""> <button id="calculate-reversehash">Calculate Reverse Hash</button></div><div id="rhash" >
-                  <br>
-                    <strong style="color:red;">Computed Reverse Hash:</strong> <span id="rhash-value"></span>  <div id="rhash-error"></div></li>
+                                       <h4>Please Enter Hash data to reverse:</h4>
+                                              <br>
+                                         <div class="rhash-form"> <input type="text" id="rword" value="930846109532517" placeholder="Enter Generated Hash value Only"> <button id="calculate-reversehash">Calculate Reverse Hash</button></div><div id="rhash" >
+                                             <br>
+                                         <strong style="color:red;">Computed Reverse Hash:</strong> <span id="rhash-value"></span></div><br>  <div id="rhash-error"></div></li>
 
-</ul>
+            </ul>
 
 
                     <script>
-                    var check,hash,letters,numbers;
+                    var check,rcheck,hash,letters,numbers;
                     letters="acdegilmnoprstuw";
                     numbers="0123456789";
+
+                    // checking inputs for hash
                     check=function(c)
                     {
                       var a,b,d;b=0;
                       for(d=c.length;b<d;b++)if(a=c[b],-1===letters.indexOf(a))return"The word should only contain letters in "+letters;return null
                   };
-                rcheck=function(c)
+
+                // checking inputs for reverse hash
+                    rcheck=function(c)
                     {
                       var a,b,d;b=0;
-                      console.log(c);
+                      //console.log(c);
 
                       for(d=c.length;b<d;b++)if(a=c[b],-1===numbers.indexOf(a))return"The word should only contain numbers in "+numbers;return null
-                  };
+                  };// hashing  core logic written here
                     hash=function(c)
                     {
                       var a,b,d,e;
@@ -53,31 +59,33 @@
                       for(e=c.length;d<e;d++)a=c[d],b=37*b+letters.indexOf(a);
                       return b
                   };
+                  // Reverse hashing core logic written here
                   reversehash=function(c)
                     {
-                      var b,d,e,i=0;
+                      var i=0;
                       var a=new Array();
-                      console.log(c);
-                     //var revHash="";
+                     // console.log(c);
+                     
                       while(c>37){
                         a[i]=c%37;
                         
-                        console.log(letters[c%37]);
+                        //console.log(letters[c%37]);
                         c=(c-(a[i]))/37;
                         i++;
 
 
                       }
-                      //for(e=c.length;d<e;d++)a=c[d],b=37*b+letters.indexOf(a);
+                      
                       var revHash = "";
-   for(var j = i-1; j >= 0; j--) {
-      revHash += letters[ a[j] ];
-      //console.log(revHash);
-      //cout<<unhashedWord;
-   }
+                    for(var j = i-1; j >= 0; j--) {
+                      revHash += letters[ a[j] ];
+                       //console.log(revHash);
+      
+                          }
                       return revHash
                   };
 
+ //Hash function invoked after clicking    
 $("#calculate-hash").click(function(c)
 {
   var a,b,d,e;
@@ -85,28 +93,34 @@ $("#calculate-hash").click(function(c)
   //console.log(e+e.length);
   c=$("#hash");
   a=$("#hash-error");
+  //selecting ID element using Jquery selector 
   
-  if(d=check(e))return a.text(d).show(),c.hide();
+  if(d=check(e))return a.text(d).show(),c.hide();// return if input data is not correct
   a.hide();
-  a=hash(e);
+  a=hash(e);// otherwise execute to hash fucntion
   //console.log(a);
   return c.show().find("#hash-value").text(a)});
+
+
+// Reverse Hash function invoked after clicking
 $("#calculate-reversehash").click(function(c)
 {
   var a,b,d,e;
+  //selecting ID element using Jquery selector 
   e=$("#rword").val();
   c=$("#rhash");
   //console.log(e+e.length);
   a=$("#rhash-error");
-  b=parseInt(c.attr("data-correct"),10);
+  
   if(d=rcheck(e))return a.text(d).show(),c.hide();
   a.hide();
   //console.log("hi");
   a=reversehash(e);
   //document.getElementById("calculate-reversehash").innerHTML = a;
-  console.log(a);
+  //console.log(a);
   return c.show().find("#rhash-value").text(a)});
-</script>                   
+</script>  
+
           </center>
     </body>
 </html>

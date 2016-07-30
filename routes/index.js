@@ -7,7 +7,11 @@ var cheerio = require('cheerio');
 
  //GET home page. 
 
-
+router.get('/', function(req, res, next) {
+  //res.render('jsearch', { title: 'Welcome to AreaHop' });
+  
+  res.sendFile('index.html', { root: path.join(__dirname, '../public') });
+});
 
 
 // API for firstquery which contains only keyword
