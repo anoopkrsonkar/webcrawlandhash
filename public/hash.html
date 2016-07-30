@@ -7,24 +7,43 @@
     </head>
       
     <body class="jumbotron text-center" style="background-color:skyblue;">
-        <center>
-              <h3>Reverse Hash</h3>
-                       <br><br>
-                <h3>Please Enter Hash data to reverse:</h3>
+        <center> <ul>
+                <li> <h3 style="color:green;"> Hash</h3>
+                       
+                <h4>Please Enter String data to Hash:</h4>
                      <br>
-                  <div class="hash-form"> <input type="text" id="word" value="leepadg" maxlength=9> <button id="calculate-hash">Calculate Hash</button></div>
-                   <div id="hash" data-correct="930846109532517"> <strong>Computed Hash:</strong> <span id="hash-value"></span>  <div id="hash-error"></div>
+                  <div class="hash-form"> <input type="text" id="word" value="leepadg" maxlength=9> <button id="calculate-hash">Calculate Hash</button></div><div id="hash" >
+                  <br>
+                    <strong style="color:red;">Computed Hash:</strong> <span id="hash-value"></span>  <div id="hash-error"></div>
+                    <br><br><br>
+</li>
 
+          <li>    <h3 style="color:green;">Reverse Hash</h3>
+                       
+                <h4>Please Enter Hash data to reverse:</h4>
+                     <br>
+                  <div class="rhash-form"> <input type="number" id="rword" value=""> <button id="calculate-reversehash">Calculate Reverse Hash</button></div><div id="rhash" >
+                  <br>
+                    <strong style="color:red;">Computed Reverse Hash:</strong> <span id="rhash-value"></span>  <div id="rhash-error"></div></li>
 
+</ul>
 
 
                     <script>
-                    var check,hash,letters;
+                    var check,hash,letters,numbers;
                     letters="acdegilmnoprstuw";
+                    numbers="0123456789";
                     check=function(c)
                     {
                       var a,b,d;b=0;
                       for(d=c.length;b<d;b++)if(a=c[b],-1===letters.indexOf(a))return"The word should only contain letters in "+letters;return null
+                  };
+                rcheck=function(c)
+                    {
+                      var a,b,d;b=0;
+                      console.log(c);
+
+                      for(d=c.length;b<d;b++)if(a=c[b],-1===numbers.indexOf(a))return"The word should only contain numbers in "+numbers;return null
                   };
                     hash=function(c)
                     {
@@ -34,41 +53,63 @@
                       for(e=c.length;d<e;d++)a=c[d],b=37*b+letters.indexOf(a);
                       return b
                   };
+                  reversehash=function(c)
+                    {
+                      var b,d,e,i=0;
+                      var a=new Array();
+                      console.log(c);
+                     //var revHash="";
+                      while(c>37){
+                        a[i]=c%37;
+                        
+                        console.log(letters[c%37]);
+                        c=(c-(a[i]))/37;
+                        i++;
+
+
+                      }
+                      //for(e=c.length;d<e;d++)a=c[d],b=37*b+letters.indexOf(a);
+                      var revHash = "";
+   for(var j = i-1; j >= 0; j--) {
+      revHash += letters[ a[j] ];
+      //console.log(revHash);
+      //cout<<unhashedWord;
+   }
+                      return revHash
+                  };
 
 $("#calculate-hash").click(function(c)
 {
   var a,b,d,e;
   e=$("#word").val();
+  //console.log(e+e.length);
   c=$("#hash");
   a=$("#hash-error");
-  b=parseInt(c.attr("data-correct"),10);
+  
   if(d=check(e))return a.text(d).show(),c.hide();
   a.hide();
   a=hash(e);
-  return c.toggleClass("hash-correct",a===b).show().find("#hash-value").text(a)});
+  //console.log(a);
+  return c.show().find("#hash-value").text(a)});
+$("#calculate-reversehash").click(function(c)
+{
+  var a,b,d,e;
+  e=$("#rword").val();
+  c=$("#rhash");
+  //console.log(e+e.length);
+  a=$("#rhash-error");
+  b=parseInt(c.attr("data-correct"),10);
+  if(d=rcheck(e))return a.text(d).show(),c.hide();
+  a.hide();
+  //console.log("hi");
+  a=reversehash(e);
+  //document.getElementById("calculate-reversehash").innerHTML = a;
+  console.log(a);
+  return c.show().find("#rhash-value").text(a)});
 </script>                   
           </center>
     </body>
 </html>
 
-<!--
-<script type="text/javascript">
 
-  function myFunction() {
-    var keyword = document.getElementById("keyword");
-    var keywordP = document.getElementById("keywordP");
-    var pageNo = document.getElementById("pageNo");
-    //var grid = document.getElementById("elements");
-    //document.getElementById("demo").innerHTML = x;
-   keyword=keyword.value;
-   keywordP=keywordP.value;
-   pageNo=pageNo.value;
-   //grid=grid.value;
-    document.getElementById("demo").innerHTML = keyword;document.getElementById("demo1").innerHTML = keywordP;document.getElementById("demo2").innerHTML = pageNo;//document.getElementById("demo3").innerHTML = grid;
-    
-//console.log(cont);
-}
-
-</script>
--->
 
