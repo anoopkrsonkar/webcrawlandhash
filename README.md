@@ -1,4 +1,4 @@
-Project lok include two things-
+This project include two things-
 1- Webcrawler
 2- Reverse Hash function
 
